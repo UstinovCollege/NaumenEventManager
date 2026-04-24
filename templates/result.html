@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Статус</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+    </head>
+    <body class="container py-5 text-center">
+        <h2>Результат регистрации</h2>
+
+        {% if status == 'confirmed' %}
+        <div class="alert alert-success">✅ Вы успешно записаны!</div>
+        {% else %}
+        <div class="alert alert-warning">
+            ⏳ Вы в листе ожидания. Ваш номер: {{ position }}
+        </div>
+        {% endif %}
+
+        <a href="/" class="btn btn-primary">На главную</a>
+    </body>
+</html>
