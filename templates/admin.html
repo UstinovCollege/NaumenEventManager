@@ -82,5 +82,21 @@
     <p class="text-muted">Пока нет вопросов.</p>
     {% endif %}
 
+    <hr class="my-4">
+
+    <!-- БЛОК СОЗДАНИЯ ОПРОСА -->
+    <h3>📊 Создать новый опрос</h3>
+    <form method="post" class="card p-3 mb-3">
+        <div class="mb-2">
+            <label class="form-label">Вопрос для голосования</label>
+            <input name="poll_question" class="form-control" placeholder="Например: Какой язык вы предпочитаете?" required>
+        </div>
+        <div class="mb-2">
+            <label class="form-label">Варианты ответов (через запятую)</label>
+            <input name="poll_options" class="form-control" placeholder="Например: Python, Java, C++, Go" required>
+        </div>
+        <button class="btn btn-success">Создать опрос</button>
+    </form>
+
 </body>
 </html> 
