@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      color: #1a1a1a;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2rem;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+    }
+    nav .brand { color: #fff; font-weight: 700; font-size: 1.25rem; }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      opacity: 0.9;
+    }
+    nav a:hover { opacity: 1; }
+    main {
+      max-width: 720px;
+      margin: 4rem auto;
+      padding: 3rem;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+    h1 { font-size: 2.5rem; margin: 0 0 1rem; }
+    p { color: #555; font-size: 1.1rem; line-height: 1.6; }
+    .actions { margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; }
+    .btn {
+      display: inline-block;
+      padding: 0.85rem 1.75rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: transform 0.15s ease;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: #667eea; color: #fff; }
+    .btn-secondary { background: #f1f1f5; color: #333; }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="brand">My App</div>
+    <div>
+      <a href="{{ url_for('index') }}">Home</a>
+      <a href="{{ url_for('register') }}">Register</a>
+      <a href="{{ url_for('admin') }}">Admin</a>
+    </div>
+  </nav>
+  <main>
+    <h1>Welcome</h1>
+    <p>This is a simple Flask starter with a registration form and an admin panel to view submissions.</p>
+    <div class="actions">
+      <a href="{{ url_for('register') }}" class="btn btn-primary">Register Now</a>
+      <a href="{{ url_for('admin') }}" class="btn btn-secondary">Admin Panel</a>
+    </div>
+  </main>
+</body>
+</html>

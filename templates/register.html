@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      color: #1a1a1a;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 2rem;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+    }
+    nav .brand { color: #fff; font-weight: 700; font-size: 1.25rem; }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      margin-left: 1.5rem;
+      font-weight: 500;
+      opacity: 0.9;
+    }
+    nav a:hover { opacity: 1; }
+    main {
+      max-width: 520px;
+      margin: 3rem auto;
+      padding: 2.5rem;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    }
+    h1 { margin: 0 0 1.5rem; font-size: 1.75rem; }
+    label { display: block; font-weight: 600; margin: 1rem 0 0.4rem; color: #333; }
+    input, textarea {
+      width: 100%;
+      padding: 0.75rem 0.9rem;
+      border: 1px solid #d6d6df;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+    input:focus, textarea:focus { outline: none; border-color: #667eea; box-shadow: 0 0 0 3px rgba(102,126,234,0.15); }
+    textarea { resize: vertical; min-height: 100px; }
+    button {
+      margin-top: 1.5rem;
+      width: 100%;
+      padding: 0.9rem;
+      background: #667eea;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    button:hover { background: #5568d3; }
+    .flash {
+      padding: 0.85rem 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+    .flash-success { background: #e6f7ec; color: #1f7a3a; border: 1px solid #b8e5c5; }
+    .flash-error { background: #fdecec; color: #a02020; border: 1px solid #f3c0c0; }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="brand">My App</div>
+    <div>
+      <a href="{{ url_for('index') }}">Home</a>
+      <a href="{{ url_for('register') }}">Register</a>
+      <a href="{{ url_for('admin') }}">Admin</a>
+    </div>
+  </nav>
+  <main>
+    <h1>Create your account</h1>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% for category, msg in messages %}
+        <div class="flash flash-{{ category }}">{{ msg }}</div>
+      {% endfor %}
+    {% endwith %}
+
+    <form method="POST" action="{{ url_for('register') }}">
+      <label for="name">Name</label>
+      <input id="name" name="name" type="text" value="{{ name or '' }}" required />
+
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" value="{{ email or '' }}" required />
+
+      <label for="message">Message (optional)</label>
+      <textarea id="message" name="message">{{ message or '' }}</textarea>
+
+      <button type="submit">Register</button>
+    </form>
+  </main>
+</body>
+</html>
