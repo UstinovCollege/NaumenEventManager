@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>✉️ Задать вопрос организаторам</h2>
+<form method="post" class="mt-3">
+    <div class="mb-2">
+        <input name="name" class="form-control" placeholder="Ваше имя *" required>
+    </div>
+    <div class="mb-2">
+        <input name="contact" class="form-control" placeholder="Email или Telegram для ответа *" required>
+    </div>
+    <div class="mb-2">
+        <textarea name="text" class="form-control" rows="4" placeholder="Текст вопроса *" required></textarea>
+    </div>
+    <button class="btn btn-primary">Отправить вопрос</button>
+</form>
+<p class="text-muted small mt-2">* Обязательные поля</p>
+{% endblock %}

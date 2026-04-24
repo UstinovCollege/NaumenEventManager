@@ -14,21 +14,39 @@
             <h1 class="mb-4">📅 Мастер-классы Naumen</h1>
 
             <!-- Flash сообщения -->
-            {% with messages = get_flashed_messages(with_categories=true) %} {%
-            if messages %} {% for category, message in messages %}
-            <div
-                class="alert alert-{{ 'danger' if category == 'error' else 'success' if category == 'success' else 'warning' }} alert-dismissible fade show"
-                role="alert"
-            >
-                {{ message }}
-                <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="alert"
-                ></button>
-            </div>
-            {% endfor %} {% endif %} {% endwith %}
+            {% with messages = get_flashed_messages(with_categories=true) %} 
+            {% if messages %} 
+                {% for category, message in messages %}
+                <div
+                    class="alert alert-{{ 'danger' if category == 'error' else 'success' if category == 'success' else 'warning' }} alert-dismissible fade show"
+                    role="alert"
+                >
+                    {{ message }}
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="alert"
+                    ></button>
+                </div>
+                {% endfor %} 
+            {% endif %} 
+            {% endwith %}
 
+            <!-- Навигация (дополнительные функции) -->
+            <div class="d-flex gap-2 flex-wrap mb-3">
+                <a href="/status" class="btn btn-outline-info btn-sm">🔍 Статус</a>
+                <a href="/feedback" class="btn btn-outline-warning btn-sm">✉️ Вопрос</a>
+                <a href="/faq" class="btn btn-outline-secondary btn-sm">❓ FAQ</a>
+                <a href="/poll" class="btn btn-outline-primary btn-sm">📊 Опросы</a>
+            </div>
+
+            <!-- Упрощённая карта площадки -->
+            <div class="alert alert-light border mb-4">
+                <strong>🗺 Схема площадки:</strong><br>
+                📍 Зал 1-3: 1 этаж, левое крыло | 📍 Зал 4: 2 этаж | 📍 Стойка регистрации: у входа
+            </div>
+
+            <!-- Список мастер-классов -->
             <div class="row g-3">
                 {% for mc in masterclasses %}
                 <div class="col-md-6 col-lg-4">
@@ -40,7 +58,7 @@
                                 🕐 {{ mc.time }} | 📍 {{ mc.location }}
                             </p>
 
-                            <!-- Улучшенный статус мест -->
+                            <!-- Статус мест -->
                             {% set free = mc.capacity - mc.registered_count %}
                             <p class="card-text mb-3">
                                 {% if free > 3 %}
@@ -74,6 +92,8 @@
             </div>
 
             <hr class="my-4" />
+            
+            <!-- Ссылка на админку -->
             <div class="text-center">
                 <a href="/admin" class="btn btn-outline-secondary btn-sm"
                     >🔧 Панель организатора</a
@@ -81,11 +101,7 @@
             </div>
         </div>
 
-        <!-- Bootstrap JS для закрытия алертов -->
+        <!-- Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-        <div class="text-center mt-4">
-            <a href="/status" class="btn btn-info">🔍 Проверить статус записи</a>
-        </div>
     </body>
 </html>
