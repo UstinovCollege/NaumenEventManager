@@ -246,12 +246,17 @@ def admin():
     questions = conn.execute("SELECT * FROM questions ORDER BY created_at DESC").fetchall()
 
     # Загрузка опросов
-    polls = conn.execute("SELECT * FROM polls ORDER BY id DESC").fetchall()
-    for p in polls:
-        p["options_count"] = conn.execute("SELECT COUNT(*) FROM poll_options WHERE poll_id=?", (p["id"],)).fetchone()[0]
+    polls_raw = conn.execute("SELECT * FROM polls ORDER BY id DESC").fetchall()
+    polls = []
+    for p in polls_raw:
+        pd = dict(p)  #sqlite3.Row в обычный словарь
+        pd["options_count"] = conn.execute(
+            "SELECT COUNT(*) FROM poll_options WHERE poll_id=?", (pd["id"],)
+        ).fetchone()[0]
+        polls.append(pd)
 
     conn.close()
-    # ✅ ВАЖНО: Возвращаем ответ с polls
+    # Возврат ответа polls
     return render_template("admin.html", masterclasses=mcs, registrations=regs, questions=questions, polls=polls)
 
 @app.route("/logout")
