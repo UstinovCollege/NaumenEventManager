@@ -1,5 +1,7 @@
 *
 !app.py
+!requirements.txt
+!README.md
 !templates/
 !templates/**
 !.gitignore
