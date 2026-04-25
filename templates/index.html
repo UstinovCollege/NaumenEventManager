@@ -11,39 +11,45 @@
     </head>
     <body class="bg-light">
         <div class="container py-4">
-            <h1 class="mb-4">📅 Мастер-классы Naumen</h1>
+            <h1 class="mb-4">📅 Мастер-классы</h1>
 
             <!-- Flash сообщения -->
-            {% with messages = get_flashed_messages(with_categories=true) %} 
-            {% if messages %} 
-                {% for category, message in messages %}
-                <div
-                    class="alert alert-{{ 'danger' if category == 'error' else 'success' if category == 'success' else 'warning' }} alert-dismissible fade show"
-                    role="alert"
-                >
-                    {{ message }}
-                    <button
-                        type="button"
-                        class="btn-close"
-                        data-bs-dismiss="alert"
-                    ></button>
-                </div>
-                {% endfor %} 
-            {% endif %} 
-            {% endwith %}
+            {% with messages = get_flashed_messages(with_categories=true) %} {%
+            if messages %} {% for category, message in messages %}
+            <div
+                class="alert alert-{{ 'danger' if category == 'error' else 'success' if category == 'success' else 'warning' }} alert-dismissible fade show"
+                role="alert"
+            >
+                {{ message }}
+                <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="alert"
+                ></button>
+            </div>
+            {% endfor %} {% endif %} {% endwith %}
 
             <!-- Навигация (дополнительные функции) -->
             <div class="d-flex gap-2 flex-wrap mb-3">
-                <a href="/status" class="btn btn-outline-info btn-sm">🔍 Статус</a>
-                <a href="/feedback" class="btn btn-outline-warning btn-sm">✉️ Вопрос</a>
-                <a href="/faq" class="btn btn-outline-secondary btn-sm">❓ FAQ</a>
-                <a href="/poll" class="btn btn-outline-primary btn-sm">📊 Опросы</a>
+                <a href="/status" class="btn btn-outline-info btn-sm"
+                    >🔍 Статус</a
+                >
+                <a href="/feedback" class="btn btn-outline-warning btn-sm"
+                    >✉️ Вопрос</a
+                >
+                <a href="/faq" class="btn btn-outline-secondary btn-sm"
+                    >❓ FAQ</a
+                >
+                <a href="/poll" class="btn btn-outline-primary btn-sm"
+                    >📊 Опросы</a
+                >
             </div>
 
             <!-- Упрощённая карта площадки -->
             <div class="alert alert-light border mb-4">
-                <strong>🗺 Схема площадки:</strong><br>
-                📍 Зал 1-3: 1 этаж, левое крыло | 📍 Зал 4: 2 этаж | 📍 Стойка регистрации: у входа
+                <strong>🗺 Схема площадки:</strong><br />
+                📍 Зал 1-3: 1 этаж, левое крыло | 📍 Зал 4: 2 этаж | 📍 Стойка
+                регистрации: у входа
             </div>
 
             <!-- Список мастер-классов -->
@@ -92,7 +98,7 @@
             </div>
 
             <hr class="my-4" />
-            
+
             <!-- Ссылка на админку -->
             <div class="text-center">
                 <a href="/admin" class="btn btn-outline-secondary btn-sm"
